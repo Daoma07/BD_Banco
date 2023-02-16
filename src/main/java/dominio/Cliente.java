@@ -24,7 +24,17 @@ public class Cliente {
 
     public Cliente() {
     }
-
+    
+    /**
+     * 
+     * Constructor para un cliente.
+     * @param id_cliente
+     * @param nombre
+     * @param apellido_paterno
+     * @param apellido_materno
+     * @param fecha_nacimineto
+     * @param id_direccion 
+     */
     public Cliente(Integer id_cliente, String nombre, String apellido_paterno, String apellido_materno, Date fecha_nacimineto, Integer id_direccion) {
         this.id_cliente = id_cliente;
         this.nombre = nombre;
@@ -34,6 +44,15 @@ public class Cliente {
         this.id_direccion = id_direccion;
     }
 
+    /**
+     * 
+     * Constructor sin id para un cliente.
+     * @param nombre
+     * @param apellido_paterno
+     * @param apellido_materno
+     * @param fecha_nacimineto
+     * @param id_direccion 
+     */
     public Cliente(String nombre, String apellido_paterno, String apellido_materno, Date fecha_nacimineto, Integer id_direccion) {
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
@@ -42,59 +61,115 @@ public class Cliente {
         this.id_direccion = id_direccion;
     }
 
+    /**
+     * Metodo que Obtiene el id del cliente.
+     * @return retorna del id del cliente.
+     */
     public Integer getId_cliente() {
         return id_cliente;
     }
 
+    /**
+     * Metodo que Setea el id del cliente.
+     * @param id_cliente 
+     */
     public void setId_cliente(Integer id_cliente) {
         this.id_cliente = id_cliente;
     }
 
+    /**
+     * Metodo que Obtiene el nombre del cliente.
+     * @return retornal el nombre del cliente.
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Metodo que setea el nombre del cliente.
+     * @param nombre 
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Metodo que obtiene el apellido paterno del cliente.
+     * @return retorna el apellido paterno del cliente.
+     */
     public String getApellido_paterno() {
         return apellido_paterno;
     }
 
+    /**
+     * Metodo que setea el apellido paterno del cliente.
+     * @param apellido_paterno 
+     */
     public void setApellido_paterno(String apellido_paterno) {
         this.apellido_paterno = apellido_paterno;
     }
 
+    /**
+     * Metodo que obtiene el apellido materno del cliente.
+     * @return retorna el apellido materno del cliente.
+     */
     public String getApellido_materno() {
         return apellido_materno;
     }
 
+    /**
+     * Metodo que setea el apellido materno del cliente
+     * @param apellido_materno 
+     */
     public void setApellido_materno(String apellido_materno) {
         this.apellido_materno = apellido_materno;
     }
 
+    /**
+     *  Metodo que se encarga de obtiener la fecha del nacimiento del cliente.
+     * @return retornal la fecha de nacimiento del cliente
+     */
     public Date getFecha_nacimineto() {
         return fecha_nacimineto;
     }
 
+    /**
+     *  Metodo que se encarga de setear la fecha de nacimiento del cliente.
+     * @param fecha_nacimineto 
+     */
     public void setFecha_nacimineto(Date fecha_nacimineto) {
         this.fecha_nacimineto = fecha_nacimineto;
     }
 
+    /**
+     *  Metodo que se encarga de obtiener el id de la tabla de direccion del cliente
+     * @return retorna el id de la direccion del cleinte
+     */
     public Integer getId_direccion() {
         return id_direccion;
     }
 
+    /**
+     * Metodo que se encarga de setear el id de la direccion del cliente.
+     * @param id_direccion 
+     */
     public void setId_direccion(Integer id_direccion) {
         this.id_direccion = id_direccion;
     }
 
+    /**
+     * Metodo toString por default del cliente.
+     * @return retorna un String con la informacion del cliente.
+     */
     @Override
     public String toString() {
         return "Cliente{" + "id_cliente=" + id_cliente + ", nombre=" + nombre + ", apellido_paterno=" + apellido_paterno + ", apellido_materno=" + apellido_materno + ", fecha_nacimineto=" + fecha_nacimineto + ", id_direccion=" + id_direccion + '}';
     }
 
+    /**
+     * Metodo que recupera el hash Code asignado
+     * @return retorna el hash
+     */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -102,6 +177,11 @@ public class Cliente {
         return hash;
     }
 
+    /**
+     * 
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

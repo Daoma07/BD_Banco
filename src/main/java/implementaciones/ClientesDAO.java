@@ -13,6 +13,7 @@ import dominio.Cliente;
  */
 public class ClientesDAO implements interfaces.IClientesDAO{
 
+    
     @Override
     public Cliente insertar(Cliente cliente) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
