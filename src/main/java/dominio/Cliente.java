@@ -5,6 +5,7 @@
  */
 package dominio;
 
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -17,24 +18,27 @@ public class Cliente {
     private String nombre;
     private String apellido_paterno;
     private String apellido_materno;
+    private Date fecha_nacimineto;
     private Integer id_direccion;
     //Edad no se pone porque se calcula desde la base de datos
 
     public Cliente() {
     }
 
-    public Cliente(Integer id_cliente, String nombre, String apellido_paterno, String apellido_materno, Integer id_direccion) {
+    public Cliente(Integer id_cliente, String nombre, String apellido_paterno, String apellido_materno, Date fecha_nacimineto, Integer id_direccion) {
         this.id_cliente = id_cliente;
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
         this.apellido_materno = apellido_materno;
+        this.fecha_nacimineto = fecha_nacimineto;
         this.id_direccion = id_direccion;
     }
 
-    public Cliente(String nombre, String apellido_paterno, String apellido_materno, Integer id_direccion) {
+    public Cliente(String nombre, String apellido_paterno, String apellido_materno, Date fecha_nacimineto, Integer id_direccion) {
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
         this.apellido_materno = apellido_materno;
+        this.fecha_nacimineto = fecha_nacimineto;
         this.id_direccion = id_direccion;
     }
 
@@ -70,6 +74,14 @@ public class Cliente {
         this.apellido_materno = apellido_materno;
     }
 
+    public Date getFecha_nacimineto() {
+        return fecha_nacimineto;
+    }
+
+    public void setFecha_nacimineto(Date fecha_nacimineto) {
+        this.fecha_nacimineto = fecha_nacimineto;
+    }
+
     public Integer getId_direccion() {
         return id_direccion;
     }
@@ -80,7 +92,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id_cliente=" + id_cliente + ", nombre=" + nombre + ", apellido_paterno=" + apellido_paterno + ", apellido_materno=" + apellido_materno + ", id_direccion=" + id_direccion + '}';
+        return "Cliente{" + "id_cliente=" + id_cliente + ", nombre=" + nombre + ", apellido_paterno=" + apellido_paterno + ", apellido_materno=" + apellido_materno + ", fecha_nacimineto=" + fecha_nacimineto + ", id_direccion=" + id_direccion + '}';
     }
 
     @Override
