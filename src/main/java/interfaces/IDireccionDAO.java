@@ -13,10 +13,10 @@ import dominio.Direccion;
  */
 public interface IDireccionDAO {
 
-    Direccion insertar(Direccion direccion);
+    Direccion insertar(Direccion direccion) throws excepciones.PersistenciaException;
 
-    Direccion actualizar(Integer id_direccion);
+    Direccion actualizar(Integer id_direccion, Direccion direccionNueva) throws excepciones.PersistenciaException;
 
-    Direccion consultar(Integer id_direccion);
+    Direccion consultar(Integer id_direccion)throws excepciones.PersistenciaException;
 
 }
