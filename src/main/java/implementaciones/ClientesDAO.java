@@ -10,6 +10,7 @@ import excepciones.PersistenciaException;
 import interfaces.IConexionBD;
 import java.sql.Connection;
 import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
@@ -31,7 +32,7 @@ public class ClientesDAO implements interfaces.IClientesDAO {
 
     /*
     Creariamos un trigger para el momento de que un usuario nuevo sea registrado en la base de datos, se le genere automaticamente una cuenta despues de ser creado.
-    */
+     */
     @Override
     public Cliente insertar(Cliente cliente) throws PersistenciaException {
         String sql = "INSERT INTO cliente(nombres, apellido_paterno, apellido_materno, fecha_nacimiento, id_direccion)"
@@ -41,14 +42,14 @@ public class ClientesDAO implements interfaces.IClientesDAO {
             comando.setString(1, cliente.getNombre());
             comando.setString(2, cliente.getApellido_paterno());
             comando.setString(3, cliente.getApellido_materno());
-            comando.setDate(4, (Date) cliente.getFecha_nacimineto());
-            comando.setInt(5, 5);
+            comando.setString(4, cliente.getFecha_nacimineto());
+            comando.setInt(5, cliente.getId_direccion());
             comando.execute();
             ResultSet resultado = comando.getGeneratedKeys();
-            JOptionPane.showMessageDialog(null, "El cliente se creo con exito");
             while (resultado.next()) {
                 int claveGenerada = resultado.getInt(1);
                 cliente.setId_cliente(claveGenerada);
+                JOptionPane.showMessageDialog(null, "El cliente se creo con exito");
                 return cliente;
             }
             LOG.log(Level.WARNING, "Se inserto el cliente pero no se generó id");
@@ -61,9 +62,9 @@ public class ClientesDAO implements interfaces.IClientesDAO {
 
     @Override
     public Cliente actualizar(Integer id_cliente) {
-      
+
         return null;
-      
+
     }
 
     @Override

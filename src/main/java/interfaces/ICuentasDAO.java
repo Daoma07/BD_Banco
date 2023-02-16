@@ -13,7 +13,7 @@ import dominio.Cuenta;
  */
 public interface ICuentasDAO {
 
-    Cuenta insertar(Cuenta cuenta);
+    Cuenta insertar(Cuenta cuenta) throws excepciones.PersistenciaException;
 
     /**
      * Deposito asi mismo

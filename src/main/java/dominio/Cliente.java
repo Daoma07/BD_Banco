@@ -18,7 +18,7 @@ public class Cliente {
     private String nombre;
     private String apellido_paterno;
     private String apellido_materno;
-    private Date fecha_nacimineto;
+    private String fecha_nacimineto;
     private Integer id_direccion;
     //Edad no se pone porque se calcula desde la base de datos
 
@@ -35,7 +35,7 @@ public class Cliente {
      * @param fecha_nacimineto
      * @param id_direccion 
      */
-    public Cliente(Integer id_cliente, String nombre, String apellido_paterno, String apellido_materno, Date fecha_nacimineto, Integer id_direccion) {
+    public Cliente(Integer id_cliente, String nombre, String apellido_paterno, String apellido_materno, String fecha_nacimineto, Integer id_direccion) {
         this.id_cliente = id_cliente;
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
@@ -55,13 +55,21 @@ public class Cliente {
      */
     //TODO: En el mysql tenemos pensado en implementar algunos stored procedures, por ejemplo en la edad, para que automaticamente se 
     //este generando la edad al momoneto de ser necesitada (FRM Informacion cliente).
-    public Cliente(String nombre, String apellido_paterno, String apellido_materno, Date fecha_nacimineto, Integer id_direccion) {
+    public Cliente(String nombre, String apellido_paterno, String apellido_materno, String fecha_nacimineto, Integer id_direccion) {
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
         this.apellido_materno = apellido_materno;
         this.fecha_nacimineto = fecha_nacimineto;
         this.id_direccion = id_direccion;
     }
+
+    public Cliente(String nombre, String apellido_paterno, String apellido_materno, String fecha_nacimineto) {
+        this.nombre = nombre;
+        this.apellido_paterno = apellido_paterno;
+        this.apellido_materno = apellido_materno;
+        this.fecha_nacimineto = fecha_nacimineto;
+    }
+    
 
 
     /**
@@ -133,7 +141,7 @@ public class Cliente {
      *  Metodo que se encarga de obtiener la fecha del nacimiento del cliente.
      * @return retornal la fecha de nacimiento del cliente
      */
-    public Date getFecha_nacimineto() {
+    public String getFecha_nacimineto() {
         return fecha_nacimineto;
     }
 
@@ -141,7 +149,7 @@ public class Cliente {
      *  Metodo que se encarga de setear la fecha de nacimiento del cliente.
      * @param fecha_nacimineto 
      */
-    public void setFecha_nacimineto(Date fecha_nacimineto) {
+    public void setFecha_nacimineto(String fecha_nacimineto) {
         this.fecha_nacimineto = fecha_nacimineto;
     }
 

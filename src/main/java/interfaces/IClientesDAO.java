@@ -14,8 +14,7 @@ import dominio.Cliente;
 public interface IClientesDAO {
 
 
-    
-    
+
     
     Cliente insertar(Cliente cliente)throws excepciones.PersistenciaException;
 
