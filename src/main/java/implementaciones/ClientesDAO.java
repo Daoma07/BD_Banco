@@ -29,7 +29,9 @@ public class ClientesDAO implements interfaces.IClientesDAO {
         this.MANEJADOR_CONEXIONES = manejadorConexiones;
     }
 
-    
+    /*
+    Creariamos un trigger para el momento de que un usuario nuevo sea registrado en la base de datos, se le genere automaticamente una cuenta despues de ser creado.
+    */
     @Override
     public Cliente insertar(Cliente cliente) throws PersistenciaException {
         String sql = "INSERT INTO cliente(nombres, apellido_paterno, apellido_materno, fecha_nacimiento, id_direccion)"
