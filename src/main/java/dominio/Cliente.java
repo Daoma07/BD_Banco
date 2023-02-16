@@ -61,10 +61,12 @@ public class Cliente {
         this.id_direccion = id_direccion;
     }
 
+
     /**
      * Metodo que Obtiene el id del cliente.
      * @return retorna del id del cliente.
      */
+
     public Integer getId_cliente() {
         return id_cliente;
     }

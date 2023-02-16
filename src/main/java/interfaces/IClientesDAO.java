@@ -13,8 +13,11 @@ import dominio.Cliente;
  */
 public interface IClientesDAO {
 
+
     
-    Cliente insertar(Cliente cliente);
+    
+    
+    Cliente insertar(Cliente cliente)throws excepciones.PersistenciaException;
 
     Cliente actualizar(Integer id_cliente);
 
