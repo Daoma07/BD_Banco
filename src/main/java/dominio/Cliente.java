@@ -42,6 +42,7 @@ public class Cliente {
         this.id_direccion = id_direccion;
     }
 
+    
     public Integer getId_cliente() {
         return id_cliente;
     }
