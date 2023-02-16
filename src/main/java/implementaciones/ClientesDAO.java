@@ -31,6 +31,7 @@ public class ClientesDAO implements interfaces.IClientesDAO {
 
     /*
     Creariamos un trigger para el momento de que un usuario nuevo sea registrado en la base de datos, se le genere automaticamente una cuenta despues de ser creado.
+    Al momento de crear un cliente se harian un registro, el registro de su cuenta, de su persona y su direccion. Se crearia un trigger para la direccion.(misma pantalla eso haria).
     */
     @Override
     public Cliente insertar(Cliente cliente) throws PersistenciaException {
