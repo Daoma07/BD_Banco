@@ -6,7 +6,7 @@
 package interfaces;
 
 import dominio.Cliente;
-
+import excepciones.PersistenciaException;
 /**
  *
  * @author HP
@@ -16,7 +16,7 @@ public interface IClientesDAO {
 
 
     
-    Cliente insertar(Cliente cliente)throws excepciones.PersistenciaException;
+    Cliente insertar(Cliente cliente)throws PersistenciaException;
 
     Cliente actualizar(Integer id_cliente);
 

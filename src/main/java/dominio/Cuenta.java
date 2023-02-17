@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author HP
  */
 public class Cuenta {
-    
+
     private Integer numero_cuenta;
     private Date fecha_apertura;
     private float saldo;
@@ -107,8 +107,5 @@ public class Cuenta {
         }
         return true;
     }
-    
-    
-    
-    
+
 }

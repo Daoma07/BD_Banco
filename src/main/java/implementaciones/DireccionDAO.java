@@ -40,7 +40,7 @@ public class DireccionDAO implements interfaces.IDireccionDAO {
             comando.setString(3, direccion.getColonia());
             comando.execute();
             ResultSet resultado = comando.getGeneratedKeys();
-            JOptionPane.showMessageDialog(null, "La direccion se creo con exito");
+
             while (resultado.next()) {
                 int claveGenerada = resultado.getInt(1);
                 direccion.setId_direccion(claveGenerada);

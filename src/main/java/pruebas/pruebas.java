@@ -5,36 +5,41 @@
  */
 package pruebas;
 
-import Frames.CrearCliente;
-import dominio.Direccion;
+
+import conexionesBD.Conexion;
+
 import excepciones.PersistenciaException;
-import implementaciones.ClientesDAO;
-import implementaciones.ConexionBD;
-import implementaciones.DireccionDAO;
-import interfaces.IClientesDAO;
-import interfaces.IConexionBD;
-import interfaces.IDireccionDAO;
+
+
 
 /**
  *
  * @author HP
  */
-public class pruebas {
+public class Pruebas {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws PersistenciaException {
         // TODO code application logic here
-        
-       
-   IConexionBD manejadorConexiones = new ConexionBD(
-                "jdbc:mysql://localhost/banco_1pm",
-                "root",
-                "daniel2002");
-        IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);
-        IDireccionDAO direccionessDAO = new DireccionDAO(manejadorConexiones);
-        new CrearCliente(clientesDAO,direccionessDAO).setVisible(true);
+        Conexion conexion = new Conexion();
+
+        conexion.generarPresentacionesRegistroCliente();
+
+
+//        IConexionBD manejadorConexiones = new ConexionBD(
+//                "jdbc:mysql://localhost/banco_1pm",
+//                "root",
+//                "daniel2002");
+//
+//        IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);
+//        String fecha = "2002-06-07";
+//
+//        Cliente cliente = new Cliente("Daniel", "Alameda", "Lopez", fecha, 1);
+//        
+//        Cliente clienteCreado = clientesDAO.insertar(cliente);
+
     }
-    
+
 }
