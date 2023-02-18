@@ -34,7 +34,7 @@ public class CuentasDAO implements interfaces.ICuentasDAO {
         String sql = "INSERT INTO cuenta(fecha_apertura,saldo,estado,id_cliente) VALUES(?,?,?,?)";
         try (Connection conexion = MANEJADOR_CONEXIONES.crearConexion();
                 PreparedStatement comando = conexion.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);) {
-            comando.setDate(1, (Date) cuenta.getFecha_apertura());
+            comando.setString(1, cuenta.getFecha_apertura());
             comando.setFloat(2, cuenta.getSaldo());
             comando.setString(3, cuenta.getEstado());
             comando.setInt(4, cuenta.getId_cliente());

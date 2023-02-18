@@ -5,27 +5,74 @@
  */
 package presentacion;
 
+import dominio.Cliente;
+import dominio.Cuenta;
+import excepciones.PersistenciaException;
+import interfaces.ICuentasDAO;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author HP
  */
 public class RegistroCuenta extends javax.swing.JFrame {
 
+    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+    private final ICuentasDAO cuentasDAO;
+    Cliente cliente;
+    String estado = null;
+
     /**
      * Creates new form RegistroCuenta
      */
-    public RegistroCuenta() {
+    public RegistroCuenta(ICuentasDAO cuentasDAO, Cliente clienteGuardado) {
+
+        this.cliente = clienteGuardado;
+        this.cuentasDAO = cuentasDAO;
         initComponents();
+        this.txtNombreCliente.setText(clienteGuardado.getNombre() + " " + clienteGuardado.getApellido_paterno() + " " + clienteGuardado.getApellido_materno());
+        this.txtClienteID.setText(String.valueOf(clienteGuardado.getId_cliente()));
+        this.txtFechaApertura.setText(dateFormat.format(new Date()));
+        this.txtSaldo.setText(null);
     }
-    
-    
-    public void capturarSaldo(){
-        if(this.btnAgregarSaldo.isSelected()){
+
+    RegistroCuenta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void seleccionarSaldo() {
+        if (this.btnAgregarSaldo.isSelected()) {
             this.txtSaldo.setEnabled(true);
-        }else if (this.btnAgregarSaldo.isSelected()==false){
+            estado = "Vigente";
+        } else if (this.btnAgregarSaldo.isSelected() == false) {
             this.txtSaldo.setEnabled(false);
-        this.txtSaldo.setText("");
+            estado = "Cancelada";
+        }
     }
+
+    public Cuenta caputurarDatos() {
+        Float saldo;
+        String fecha = this.txtFechaApertura.getText();
+        
+        if (this.txtSaldo.getText() == null) {
+            saldo=0.f;
+        }else {
+         saldo = Float.parseFloat(this.txtSaldo.getText());
+        }
+       
+        String estadoCuenta = this.estado;
+        Integer idCliente = cliente.getId_cliente();
+        return new Cuenta(fecha, saldo, estadoCuenta, idCliente);
+    }
+
+    public void guardar() throws PersistenciaException {
+        Cuenta cuenta = this.caputurarDatos();
+        Cuenta cuentaGuardada = this.cuentasDAO.insertar(cuenta);
+
     }
 
     /**
@@ -47,6 +94,7 @@ public class RegistroCuenta extends javax.swing.JFrame {
         btnAgregarSaldo = new javax.swing.JRadioButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         txtSaldo = new javax.swing.JTextField();
+        btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +127,13 @@ public class RegistroCuenta extends javax.swing.JFrame {
 
         txtSaldo.setEnabled(false);
 
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,27 +147,30 @@ public class RegistroCuenta extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnAgregarSaldo)
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addComponent(jRadioButton1)))
+                                        .addComponent(btnAgregarSaldo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jRadioButton1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11))
                                 .addGap(18, 18, 18)
-                                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel9)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtFechaApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel11))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel10)
-                                        .addComponent(txtClienteID, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(txtClienteID, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtFechaApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(0, 28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGuardar)
+                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,11 +191,13 @@ public class RegistroCuenta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarSaldo)
                     .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtFechaApertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46))
+                .addGap(32, 32, 32)
+                .addComponent(btnGuardar)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,46 +206,23 @@ public class RegistroCuenta extends javax.swing.JFrame {
 
     private void btnAgregarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarSaldoActionPerformed
         // TODO add your handling code here:
-        capturarSaldo();
+        seleccionarSaldo();
     }//GEN-LAST:event_btnAgregarSaldoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            // TODO add your handling code here:
+            guardar();
+            dispose();
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(RegistroCuenta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistroCuenta().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton btnAgregarSaldo;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

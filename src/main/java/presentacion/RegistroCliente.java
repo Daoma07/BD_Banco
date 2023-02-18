@@ -14,15 +14,18 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import conexionesBD.Conexion;
 
 /**
  *
  * @author HP
  */
 public class RegistroCliente extends javax.swing.JFrame {
-
+    
     private final IClientesDAO clientesDAO;
     private IDireccionDAO direccionesDAO;
+    Conexion conexion = new Conexion();
+    public Cliente clienteGuardado;
 
     /**
      * Creates new form RegistroCliente
@@ -32,19 +35,19 @@ public class RegistroCliente extends javax.swing.JFrame {
         this.direccionesDAO = direccionesDAO;
         initComponents();
     }
-
+    
     public RegistroCliente(IClientesDAO clientesDAO) {
         this.clientesDAO = clientesDAO;
         initComponents();
     }
-
+    
     public Direccion extraerDatosDireccion() {
         String calle = this.txtCalle.getText();
         String numero = this.txtNumero.getText();
         String colonia = this.txtColonia.getText();
         return new Direccion(calle, numero, colonia);
     }
-
+    
     public Cliente extraerDatosCliente(Cliente cliente) {
         String nombre = this.txtNombre.getText();
         String apellido_paterno = this.txtApellidoPaterno.getText();
@@ -55,17 +58,17 @@ public class RegistroCliente extends javax.swing.JFrame {
         int id_direccion = cliente.getDireccion().getId_direccion();
         return new Cliente(nombre, apellido_paterno, apellido_materno, fecha_nacimiento, id_direccion);
     }
-
+    
     private void mostrarErrorAlGuardarCliente() {
         JOptionPane.showMessageDialog(this, "No fue posible guardar al cliente: ", "error", JOptionPane.ERROR_MESSAGE);
     }
-
+    
     private void mostrarErrorAlGuardarDireccion() {
         JOptionPane.showMessageDialog(this, "No fue posible guardar la direccion: ", "error", JOptionPane.ERROR_MESSAGE);
     }
-
+    
     public Cliente guardarDireccion() {
-
+        
         try {
             Direccion direccion = extraerDatosDireccion();
             return new Cliente(direccionesDAO.insertar(direccion));
@@ -74,13 +77,13 @@ public class RegistroCliente extends javax.swing.JFrame {
         }
         return null;
     }
-
+    
     public void guardarCliente(Cliente cliente) throws PersistenciaException {
-
+        
         Cliente clienteFrom = this.extraerDatosCliente(cliente);
-        Cliente clienteGuardado = this.clientesDAO.insertar(clienteFrom);
+        clienteGuardado = this.clientesDAO.insertar(clienteFrom);
         //  clienteFrom = this.clientesDAO.insertar(cliente);
-        JOptionPane.showMessageDialog(null, clienteGuardado.toString());
+
     }
 
     /**
@@ -259,16 +262,20 @@ public class RegistroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
+        
         try {
             // TODO add your handling code here:
             guardarCliente(guardarDireccion());
+            
+            RegistroCuenta registroCuenta = new RegistroCuenta(conexion.generarPresentacionesRegistrarCuenta(), clienteGuardado);
+            registroCuenta.setVisible(true);
+            
             dispose();
         } catch (PersistenciaException ex) {
             Logger.getLogger(RegistroCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         ;
-
+        
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 

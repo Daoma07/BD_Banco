@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Cuenta {
 
     private Integer numero_cuenta;
-    private Date fecha_apertura;
+    private String fecha_apertura;
     private float saldo;
     private String estado;
     private Integer id_cliente;
@@ -23,7 +23,7 @@ public class Cuenta {
     public Cuenta() {
     }
 
-    public Cuenta(Integer numero_cuenta, Date fecha_apertura, float saldo, String estado, Integer id_cliente) {
+    public Cuenta(Integer numero_cuenta, String fecha_apertura, float saldo, String estado, Integer id_cliente) {
         this.numero_cuenta = numero_cuenta;
         this.fecha_apertura = fecha_apertura;
         this.saldo = saldo;
@@ -31,7 +31,7 @@ public class Cuenta {
         this.id_cliente = id_cliente;
     }
 
-    public Cuenta(Date fecha_apertura, float saldo, String estado, Integer id_cliente) {
+    public Cuenta(String fecha_apertura, float saldo, String estado, Integer id_cliente) {
         this.fecha_apertura = fecha_apertura;
         this.saldo = saldo;
         this.estado = estado;
@@ -46,11 +46,11 @@ public class Cuenta {
         this.numero_cuenta = numero_cuenta;
     }
 
-    public Date getFecha_apertura() {
+    public String getFecha_apertura() {
         return fecha_apertura;
     }
 
-    public void setFecha_apertura(Date fecha_apertura) {
+    public void setFecha_apertura(String fecha_apertura) {
         this.fecha_apertura = fecha_apertura;
     }
 

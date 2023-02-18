@@ -26,4 +26,11 @@ public class Conexion {
         new RegistroCliente(clientesDAO, direccionesDAO).setVisible(true);
     }
 
+    public ICuentasDAO generarPresentacionesRegistrarCuenta() {
+        ICuentasDAO cuentasDAO = new CuentasDAO(manejadorConexiones);
+
+        return new CuentasDAO(manejadorConexiones);
+
+    }
+
 }
