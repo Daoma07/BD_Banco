@@ -5,7 +5,6 @@
  */
 package dominio;
 
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -15,21 +14,21 @@ import java.util.Objects;
 public class Transferencia {
 
     private Integer id_transferencia;
-    private Date fecha_hora;
+    private String fecha_hora;
     private Integer id_CuentaClienteOrigen;
     private Integer id_CuentaClienteDestino;
 
     public Transferencia() {
     }
 
-    public Transferencia(Integer id_transferencia, Date fecha_hora, Integer id_CuentaClienteOrigen, Integer id_CuentaClienteDestino) {
+    public Transferencia(Integer id_transferencia, String fecha_hora, Integer id_CuentaClienteOrigen, Integer id_CuentaClienteDestino) {
         this.id_transferencia = id_transferencia;
         this.fecha_hora = fecha_hora;
         this.id_CuentaClienteOrigen = id_CuentaClienteOrigen;
         this.id_CuentaClienteDestino = id_CuentaClienteDestino;
     }
 
-    public Transferencia(Date fecha_hora, Integer id_CuentaClienteOrigen, Integer id_CuentaClienteDestino) {
+    public Transferencia(String fecha_hora, Integer id_CuentaClienteOrigen, Integer id_CuentaClienteDestino) {
         this.fecha_hora = fecha_hora;
         this.id_CuentaClienteOrigen = id_CuentaClienteOrigen;
         this.id_CuentaClienteDestino = id_CuentaClienteDestino;
@@ -43,11 +42,11 @@ public class Transferencia {
         this.id_transferencia = id_transferencia;
     }
 
-    public Date getFecha_hora() {
+    public String getFecha_hora() {
         return fecha_hora;
     }
 
-    public void setFecha_hora(Date fecha_hora) {
+    public void setFecha_hora(String fecha_hora) {
         this.fecha_hora = fecha_hora;
     }
 

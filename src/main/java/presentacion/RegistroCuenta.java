@@ -37,7 +37,8 @@ public class RegistroCuenta extends javax.swing.JFrame {
         this.txtNombreCliente.setText(clienteGuardado.getNombre() + " " + clienteGuardado.getApellido_paterno() + " " + clienteGuardado.getApellido_materno());
         this.txtClienteID.setText(String.valueOf(clienteGuardado.getId_cliente()));
         this.txtFechaApertura.setText(dateFormat.format(new Date()));
-        this.txtSaldo.setText(null);
+        this.txtSaldo.setText("0");
+        this.estado = "Cancelada";
     }
 
     RegistroCuenta() {
@@ -55,15 +56,11 @@ public class RegistroCuenta extends javax.swing.JFrame {
     }
 
     public Cuenta caputurarDatos() {
-        Float saldo;
+
         String fecha = this.txtFechaApertura.getText();
-        
-        if (this.txtSaldo.getText() == null) {
-            saldo=0.f;
-        }else {
-         saldo = Float.parseFloat(this.txtSaldo.getText());
-        }
-       
+
+        Float saldo = Float.parseFloat(this.txtSaldo.getText());
+
         String estadoCuenta = this.estado;
         Integer idCliente = cliente.getId_cliente();
         return new Cuenta(fecha, saldo, estadoCuenta, idCliente);

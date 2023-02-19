@@ -10,8 +10,10 @@ import excepciones.PersistenciaException;
 import interfaces.IConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -62,6 +64,37 @@ public class CuentasDAO implements interfaces.ICuentasDAO {
     @Override
     public Cuenta cancelarCuenta(Cuenta numero_cuenta) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Cuenta> consultarCuentas(int id_cliente) throws PersistenciaException {
+        String sql = "SELECT * FROM cuenta WHERE id_cliente=? AND estado=1";
+        List<Cuenta> listaCuentas = new LinkedList<>();
+        try (
+                Connection conexion = MANEJADOR_CONEXIONES.crearConexion();
+                PreparedStatement comando = conexion.prepareStatement(sql);) {
+            comando.setInt(1, id_cliente);
+            //Statement comando = conexion.createStatement();
+
+            ResultSet resultado = comando.executeQuery();
+            while (resultado.next()) {
+                Integer numeroCuenta = resultado.getInt("numero_cuenta");
+                String fechaApertura = resultado.getString("fecha_apertura");
+                float saldo = resultado.getFloat("saldo");
+                String estado = resultado.getString("estado");
+                Integer idCliente = resultado.getInt("id_cliente");
+                Cuenta cuenta = new Cuenta(numeroCuenta, fechaApertura, saldo, estado, idCliente);
+
+                listaCuentas.add(cuenta);
+
+            }
+            return listaCuentas;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println(ex.getMessage());
+            throw new PersistenciaException("No fue posible consultar lista de clientes");
+        }
     }
 
 }

@@ -6,6 +6,8 @@
 package interfaces;
 
 import dominio.Cuenta;
+import java.util.List;
+import excepciones.PersistenciaException;
 
 /**
  *
@@ -13,7 +15,7 @@ import dominio.Cuenta;
  */
 public interface ICuentasDAO {
 
-    Cuenta insertar(Cuenta cuenta) throws excepciones.PersistenciaException;
+    Cuenta insertar(Cuenta cuenta) throws PersistenciaException;
 
     /**
      * Deposito asi mismo
@@ -21,5 +23,7 @@ public interface ICuentasDAO {
     Cuenta actualizarSaldo(Cuenta numero_cuenta);
 
     Cuenta cancelarCuenta(Cuenta numero_cuenta);
+
+    List<Cuenta> consultarCuentas(int id_cliente) throws PersistenciaException;
 
 }

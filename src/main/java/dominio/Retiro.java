@@ -5,7 +5,6 @@
  */
 package dominio;
 
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -17,13 +16,13 @@ public class Retiro {
     private Integer folio;
     private String contraseña;
     private String estado;
-    private Date fecha_hora;
+    private String fecha_hora;
     private Integer numero_cuenta;
 
     public Retiro() {
     }
 
-    public Retiro(Integer folio, String contraseña, String estado, Date fecha_hora, Integer numero_cuenta) {
+    public Retiro(Integer folio, String contraseña, String estado, String fecha_hora, Integer numero_cuenta) {
         this.folio = folio;
         this.contraseña = contraseña;
         this.estado = estado;
@@ -31,7 +30,7 @@ public class Retiro {
         this.numero_cuenta = numero_cuenta;
     }
 
-    public Retiro(String contraseña, String estado, Date fecha_hora, Integer numero_cuenta) {
+    public Retiro(String contraseña, String estado, String fecha_hora, Integer numero_cuenta) {
         this.contraseña = contraseña;
         this.estado = estado;
         this.fecha_hora = fecha_hora;
@@ -62,11 +61,11 @@ public class Retiro {
         this.estado = estado;
     }
 
-    public Date getFecha_hora() {
+    public String getFecha_hora() {
         return fecha_hora;
     }
 
-    public void setFecha_hora(Date fecha_hora) {
+    public void setFecha_hora(String fecha_hora) {
         this.fecha_hora = fecha_hora;
     }
 

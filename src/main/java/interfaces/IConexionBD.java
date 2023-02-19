@@ -12,10 +12,12 @@ import java.sql.*;
  * @author HP
  */
 public interface IConexionBD {
+
     /**
      * Crea una conexión y devuelve ojeto Connection
+     *
      * @return Devuelve ojeto Connection
-     * @throws SQLException 
+     * @throws SQLException
      */
     Connection crearConexion() throws SQLException;
 }

@@ -17,6 +17,6 @@ public interface IDireccionDAO {
 
     Direccion actualizar(Integer id_direccion, Direccion direccionNueva) throws excepciones.PersistenciaException;
 
-    Direccion consultar(Integer id_direccion)throws excepciones.PersistenciaException;
+    Direccion consultar(Integer id_direccion) throws excepciones.PersistenciaException;
 
 }

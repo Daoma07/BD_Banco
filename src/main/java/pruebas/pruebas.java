@@ -5,12 +5,10 @@
  */
 package pruebas;
 
-
 import conexionesBD.Conexion;
 
 import excepciones.PersistenciaException;
-
-
+import presentacion.MenuPrincipa;
 
 /**
  *
@@ -23,10 +21,8 @@ public class Pruebas {
      */
     public static void main(String[] args) throws PersistenciaException {
         // TODO code application logic here
-        Conexion conexion = new Conexion();
-
-        conexion.generarPresentacionesRegistroCliente();
-
+        MenuPrincipa menuPrincipal = new MenuPrincipa();
+        menuPrincipal.setVisible(true);
 
 //        IConexionBD manejadorConexiones = new ConexionBD(
 //                "jdbc:mysql://localhost/banco_1pm",
@@ -39,7 +35,6 @@ public class Pruebas {
 //        Cliente cliente = new Cliente("Daniel", "Alameda", "Lopez", fecha, 1);
 //        
 //        Cliente clienteCreado = clientesDAO.insertar(cliente);
-
     }
 
 }

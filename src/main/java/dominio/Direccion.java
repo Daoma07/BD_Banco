@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author HP
  */
 public class Direccion {
-    
+
     private Integer id_direccion;
     private String calle;
     private String numero;
@@ -95,7 +95,5 @@ public class Direccion {
         }
         return true;
     }
-    
-    
-    
+
 }

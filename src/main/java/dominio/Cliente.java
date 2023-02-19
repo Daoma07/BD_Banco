@@ -5,7 +5,7 @@
  */
 package dominio;
 
-import java.util.Date;
+
 import java.util.Objects;
 
 /**
@@ -75,6 +75,10 @@ public class Cliente {
 
     public Cliente(Direccion direccion) {
         this.direccion = direccion;
+    }
+
+    public Cliente(int id) {
+        this.id_cliente=id;
     }
 
     public Direccion getDireccion() {

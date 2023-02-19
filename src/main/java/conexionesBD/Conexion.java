@@ -5,8 +5,13 @@
  */
 package conexionesBD;
 
+import dominio.Cliente;
+import dominio.Cuenta;
+import excepciones.PersistenciaException;
 import implementaciones.*;
 import interfaces.*;
+import java.util.List;
+import javax.swing.JOptionPane;
 import presentacion.*;
 
 /**
@@ -19,6 +24,23 @@ public class Conexion {
             "jdbc:mysql://localhost/banco_1pm",
             "root",
             "daniel2002");
+
+    public Cliente clienteID(int idCliente) {
+        IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);
+        return clientesDAO.consultar(idCliente);
+    }
+
+    public void cuentaLista(Cliente cliente) throws PersistenciaException {
+        ICuentasDAO cuentasDAO = new CuentasDAO(manejadorConexiones);
+        List<Cuenta> cuentas = cuentasDAO.consultarCuentas(cliente.getId_cliente());
+        new GenerarTransferencia(cliente, cuentas).setVisible(true);
+    }
+
+    public List<Cuenta> generarListaCuentas(Cliente cliente) throws PersistenciaException {
+        ICuentasDAO cuentasDAO = new CuentasDAO(manejadorConexiones);
+        List<Cuenta> cuentas = cuentasDAO.consultarCuentas(cliente.getId_cliente());
+        return cuentas;
+    }
 
     public void generarPresentacionesRegistroCliente() {
         IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);
@@ -33,4 +55,12 @@ public class Conexion {
 
     }
 
+    public void tablaCientesSesion() throws PersistenciaException {
+        IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);
+        new BuscarClienteSesion(clientesDAO).setVisible(true);
+    }
+
+    public void generarPresentacionPaginaPrincipal(Cliente cliente) {
+        new PaginaPrincipal(cliente).setVisible(true);
+    }
 }

@@ -12,9 +12,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import utils.ConfiguracionPaginado;
 
 /**
  *
@@ -31,7 +34,9 @@ public class ClientesDAO implements interfaces.IClientesDAO {
 
     @Override
     public Cliente insertar(Cliente cliente) throws PersistenciaException {
-        String sql = "INSERT INTO cliente(nombres, apellido_paterno, apellido_materno, fecha_nacimiento, id_direccion) VALUES(?,?,?,?,?)";
+       // String sql = "INSERT INTO cliente(nombres, apellido_paterno, apellido_materno, fecha_nacimiento, id_direccion) VALUES(?,?,?,?,?)";
+        String sql = "{CALL agregar_cliente(?,?,?,?,?)}";
+        
         try (
                 Connection conexion = MANEJADOR_CONEXIONES.crearConexion();
                 PreparedStatement comando = conexion.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);) {
@@ -68,7 +73,63 @@ public class ClientesDAO implements interfaces.IClientesDAO {
 
     @Override
     public Cliente consultar(Integer id_cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM cliente WHERE id_cliente=?";
+        try (
+                Connection conexion = MANEJADOR_CONEXIONES.crearConexion();
+                PreparedStatement comando = conexion.prepareStatement(sql);) {
+
+            //Statement comando = conexion.createStatement();
+            comando.setInt(1, id_cliente);
+            ResultSet resultado = comando.executeQuery();
+            Cliente cliente = null;
+            if (resultado.next()) {
+                Integer idClientee = resultado.getInt("id_cliente");
+                String nombre = resultado.getString("nombres");
+                String apellidoPaterno = resultado.getString("apellido_paterno");
+                String apellidoMaterno = resultado.getString("apellido_materno");
+                String fechaNacimiento = resultado.getString("fecha_nacimiento");
+                Integer idDireccion = resultado.getInt("id_direccion");
+                cliente = new Cliente(idClientee, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, idDireccion);
+            }
+            return cliente;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public List<Cliente> consultarClientes(ConfiguracionPaginado configPaginado) throws PersistenciaException {
+        String sql = "SELECT * FROM cliente LIMIT ? OFFSET ?";
+        List<Cliente> listaClientes = new LinkedList<>();
+        try (
+                Connection conexion = MANEJADOR_CONEXIONES.crearConexion();
+                PreparedStatement comando = conexion.prepareStatement(sql);) {
+
+            //Statement comando = conexion.createStatement();
+            comando.setInt(1, configPaginado.getElementosPorPagina());
+            comando.setInt(2, configPaginado.getElementosASaltar());
+            ResultSet resultado = comando.executeQuery();
+            while (resultado.next()) {
+                Integer idClientee = resultado.getInt("id_cliente");
+                String nombre = resultado.getString("nombres");
+                String apellidoPaterno = resultado.getString("apellido_paterno");
+                String apellidoMaterno = resultado.getString("apellido_materno");
+                String fechaNacimiento = resultado.getString("fecha_nacimiento");
+                Integer idDireccion = resultado.getInt("id_direccion");
+                Cliente cliente = new Cliente(idClientee, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, idDireccion);
+                listaClientes.add(cliente);
+
+            }
+            return listaClientes;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println(ex.getMessage());
+            throw new PersistenciaException("No fue posible consultar lista de clientes");
+        }
     }
 
 }
