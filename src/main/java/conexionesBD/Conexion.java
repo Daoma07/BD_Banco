@@ -18,7 +18,7 @@ public class Conexion {
     IConexionBD manejadorConexiones = new ConexionBD(
             "jdbc:mysql://localhost/banco_1pm",
             "root",
-            "david");
+            "daniel2002");
 
     public void generarPresentacionesRegistroCliente() {
         IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);

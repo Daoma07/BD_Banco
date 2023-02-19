@@ -7,13 +7,8 @@ package pruebas;
 
 
 import conexionesBD.Conexion;
-import dominio.Cliente;
 
 import excepciones.PersistenciaException;
-import implementaciones.ClientesDAO;
-import implementaciones.ConexionBD;
-import interfaces.IClientesDAO;
-import interfaces.IConexionBD;
 
 
 
@@ -33,17 +28,17 @@ public class Pruebas {
         conexion.generarPresentacionesRegistroCliente();
 
 
-        IConexionBD manejadorConexiones = new ConexionBD(
-                "jdbc:mysql://localhost/banco_1pm",
-                "root",
-                "daniel2002");
-
-        IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);
-        String fecha = "2002-06-07";
-
-        Cliente cliente = new Cliente("Daniel", "Alameda", "Lopez", fecha, 1);
-        
-        Cliente clienteCreado = clientesDAO.insertar(cliente);
+//        IConexionBD manejadorConexiones = new ConexionBD(
+//                "jdbc:mysql://localhost/banco_1pm",
+//                "root",
+//                "daniel2002");
+//
+//        IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);
+//        String fecha = "2002-06-07";
+//
+//        Cliente cliente = new Cliente("Daniel", "Alameda", "Lopez", fecha, 1);
+//        
+//        Cliente clienteCreado = clientesDAO.insertar(cliente);
 
     }
 
