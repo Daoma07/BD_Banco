@@ -104,7 +104,7 @@ public class GenerarTransferencia extends javax.swing.JFrame {
 
     public void guardarTransferencia() {
         Transferencia transferencia = new Transferencia(dateFormat.format(new Date()),
-                Integer.parseInt(String.valueOf(comBoxCuentasCliente.getSelectedItem())),
+               Integer.parseInt(String.valueOf(comBoxCuentasCliente.getSelectedItem())), 
                 Integer.parseInt(String.valueOf(comBoxCuentasClienteDestinatario.getSelectedItem())),
                 Float.parseFloat(this.txtMonto.getText()));
         JOptionPane.showMessageDialog(null, transferencia.toString());
