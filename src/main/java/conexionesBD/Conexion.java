@@ -24,6 +24,11 @@ public class Conexion {
             "root",
             "david");
 
+    /**
+     * 
+     * @param idCliente 
+     * @return 
+     */
     public Cliente clienteID(int idCliente) {
         IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);
         return clientesDAO.consultar(idCliente);
