@@ -233,16 +233,16 @@ public class RegistroCuenta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-<<<<<<< HEAD
+
     private void txtFechaAperturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaAperturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaAperturaActionPerformed
-=======
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
->>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

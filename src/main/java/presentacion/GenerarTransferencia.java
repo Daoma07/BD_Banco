@@ -104,7 +104,7 @@ public class GenerarTransferencia extends javax.swing.JFrame {
 
     public void guardarTransferencia() {
         Transferencia transferencia = new Transferencia(dateFormat.format(new Date()),
-               Integer.parseInt(String.valueOf(comBoxCuentasCliente.getSelectedItem())), 
+                Integer.parseInt(String.valueOf(comBoxCuentasCliente.getSelectedItem())),
                 Integer.parseInt(String.valueOf(comBoxCuentasClienteDestinatario.getSelectedItem())),
                 Float.parseFloat(this.txtMonto.getText()));
         JOptionPane.showMessageDialog(null, transferencia.toString());
@@ -289,19 +289,17 @@ public class GenerarTransferencia extends javax.swing.JFrame {
         determinarCuentasDestinatario();
     }//GEN-LAST:event_comBoxCuentasClienteDestinatarioActionPerformed
 
-<<<<<<< HEAD
+            <<<<<<< HEAD
     private void btnEnvialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvialActionPerformed
 
         guardarTransferencia();
     }//GEN-LAST:event_btnEnvialActionPerformed
-=======
+            =======
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
->>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
-
-
+            >>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnvial;
     private javax.swing.JButton btnValidar;
