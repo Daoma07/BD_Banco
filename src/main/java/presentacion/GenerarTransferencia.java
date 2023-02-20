@@ -136,10 +136,14 @@ public class GenerarTransferencia extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         btnValidar = new javax.swing.JButton();
         txtiDClienteDestinatario = new javax.swing.JTextField();
+<<<<<<< HEAD
         btnEnvial = new javax.swing.JButton();
         txtMonto = new javax.swing.JTextField();
 
         jScrollPane1.setViewportView(jTextPane1);
+=======
+        jButton1 = new javax.swing.JButton();
+>>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,10 +177,17 @@ public class GenerarTransferencia extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         btnEnvial.setText("Enviar");
         btnEnvial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnvialActionPerformed(evt);
+=======
+        jButton1.setText("Atras");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+>>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
             }
         });
 
@@ -204,6 +215,7 @@ public class GenerarTransferencia extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnValidar)))
                 .addGap(28, 28, 28))
+<<<<<<< HEAD
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -213,6 +225,12 @@ public class GenerarTransferencia extends javax.swing.JFrame {
                         .addGap(219, 219, 219)
                         .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+=======
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(44, 44, 44))
+>>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,11 +254,17 @@ public class GenerarTransferencia extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
                         .addComponent(comBoxCuentasCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEnvial)
                 .addGap(98, 98, 98))
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(44, 44, 44))
+>>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
         );
 
         pack();
@@ -265,10 +289,17 @@ public class GenerarTransferencia extends javax.swing.JFrame {
         determinarCuentasDestinatario();
     }//GEN-LAST:event_comBoxCuentasClienteDestinatarioActionPerformed
 
+<<<<<<< HEAD
     private void btnEnvialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnvialActionPerformed
 
         guardarTransferencia();
     }//GEN-LAST:event_btnEnvialActionPerformed
+=======
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+>>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -276,6 +307,7 @@ public class GenerarTransferencia extends javax.swing.JFrame {
     private javax.swing.JButton btnValidar;
     private javax.swing.JComboBox<String> comBoxCuentasCliente;
     private javax.swing.JComboBox<String> comBoxCuentasClienteDestinatario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

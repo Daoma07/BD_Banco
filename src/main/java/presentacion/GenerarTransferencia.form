@@ -61,6 +61,7 @@
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
+<<<<<<< HEAD
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -73,6 +74,12 @@
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
+=======
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+>>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,11 +110,17 @@
                       <Component id="comBoxCuentasCliente" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
+<<<<<<< HEAD
               <EmptySpace pref="155" max="32767" attributes="0"/>
               <Component id="txtMonto" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnEnvial" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+=======
+              <EmptySpace pref="260" max="32767" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+>>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
           </Group>
       </Group>
     </DimensionLayout>
@@ -193,6 +206,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtiDClienteDestinatario">
     </Component>
+<<<<<<< HEAD
     <Component class="javax.swing.JButton" name="btnEnvial">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enviar"/>
@@ -203,5 +217,15 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtMonto">
     </Component>
+=======
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Atras"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+>>>>>>> 8472d25e952624725f0800d6c00c52b53ab4212d
   </SubComponents>
 </Form>
