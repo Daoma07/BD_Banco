@@ -6,14 +6,14 @@
 package interfaces;
 
 import dominio.Transferencia;
-
+import excepciones.PersistenciaException;
 /**
  *
  * @author HP
  */
 public interface ITrasnferenciasDAO {
 
-    Transferencia insertar(Transferencia transferencia);
+    void insertar(Transferencia transferencia) throws PersistenciaException;
 
     Transferencia consultar(Integer id_transferencia);
 

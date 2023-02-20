@@ -34,8 +34,8 @@ public class ClientesDAO implements interfaces.IClientesDAO {
 
     @Override
     public Cliente insertar(Cliente cliente) throws PersistenciaException {
-       // String sql = "INSERT INTO cliente(nombres, apellido_paterno, apellido_materno, fecha_nacimiento, id_direccion) VALUES(?,?,?,?,?)";
-        String sql = "{CALL agregar_cliente(?,?,?,?,?)}";
+     String sql = "INSERT INTO cliente(nombres, apellido_paterno, apellido_materno, fecha_nacimiento, id_direccion) VALUES(?,?,?,?,?)";
+           // String sql = "{CALL agregar_cliente(?,?,?,?,?)}";
         
         try (
                 Connection conexion = MANEJADOR_CONEXIONES.crearConexion();
@@ -54,7 +54,7 @@ public class ClientesDAO implements interfaces.IClientesDAO {
                 int claveGenerada = rs.getInt(1);
                 cliente.setId_cliente(claveGenerada);
                 JOptionPane.showMessageDialog(null, "Cliente Creado con EXITO");
-                return cliente;
+            return cliente;
             }
             LOG.log(Level.WARNING, "Se inserto el cliente pero no se gener� id");
             throw new PersistenciaException("Se inserto el cliente pero no se gener� id");

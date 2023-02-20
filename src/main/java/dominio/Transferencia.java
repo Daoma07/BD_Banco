@@ -17,6 +17,7 @@ public class Transferencia {
     private String fecha_hora;
     private Integer id_CuentaClienteOrigen;
     private Integer id_CuentaClienteDestino;
+    private float saldo;
 
     public Transferencia() {
     }
@@ -28,10 +29,19 @@ public class Transferencia {
         this.id_CuentaClienteDestino = id_CuentaClienteDestino;
     }
 
-    public Transferencia(String fecha_hora, Integer id_CuentaClienteOrigen, Integer id_CuentaClienteDestino) {
+    public Transferencia(String fecha_hora, Integer id_CuentaClienteOrigen, Integer id_CuentaClienteDestino, float saldo) {
         this.fecha_hora = fecha_hora;
         this.id_CuentaClienteOrigen = id_CuentaClienteOrigen;
         this.id_CuentaClienteDestino = id_CuentaClienteDestino;
+        this.saldo = saldo;
+    }
+
+    public float getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
     }
 
     public Integer getId_transferencia() {

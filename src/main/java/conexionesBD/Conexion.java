@@ -5,8 +5,7 @@
  */
 package conexionesBD;
 
-import dominio.Cliente;
-import dominio.Cuenta;
+import dominio.*;
 import excepciones.PersistenciaException;
 import implementaciones.*;
 import interfaces.*;
@@ -28,6 +27,11 @@ public class Conexion {
     public Cliente clienteID(int idCliente) {
         IClientesDAO clientesDAO = new ClientesDAO(manejadorConexiones);
         return clientesDAO.consultar(idCliente);
+    }
+
+    public void ingresarTranferencia(Transferencia transferencia) throws PersistenciaException {
+        ITrasnferenciasDAO transferenciaDAO = new TransferenciaDAO(manejadorConexiones);
+        transferenciaDAO.insertar(transferencia);
     }
 
     public void cuentaLista(Cliente cliente) throws PersistenciaException {

@@ -112,6 +112,11 @@ public class RegistroCuenta extends javax.swing.JFrame {
         jLabel11.setText("Cliente");
 
         txtFechaApertura.setEditable(false);
+        txtFechaApertura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaAperturaActionPerformed(evt);
+            }
+        });
 
         btnAgregarSaldo.setText("Agregar Saldo");
         btnAgregarSaldo.addActionListener(new java.awt.event.ActionListener() {
@@ -215,6 +220,10 @@ public class RegistroCuenta extends javax.swing.JFrame {
             Logger.getLogger(RegistroCuenta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtFechaAperturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaAperturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaAperturaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
